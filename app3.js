@@ -1,0 +1,1 @@
+const search = require('./js/script3');
