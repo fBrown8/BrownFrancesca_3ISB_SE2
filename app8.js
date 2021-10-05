@@ -47,6 +47,30 @@ app.get("/second", (req, res) => {
     });
 });
 
+app.get("/third", (req, res) => {
+    let newRow = {CountryId: 18, TotalCases: 92834728, TotalTests: 123211, TotalDeaths: 21231210};
+    let sql = "INSERT INTO stat SET ?";
+    con.query(sql, newRow, (err,result) => {
+        if(!err){
+            res.send(result);
+        }else{
+            res.send("failed to insert into stat table....")
+        }
+    });
+});
+
+app.get("/fourth", (req, res) => {
+    let sql = "SELECT * FROM stat";
+    con.query(sql,(err,result) => {
+        if(!err){
+            res.send(result);
+        }else{
+            res.send("failed to read stat table....")
+        }
+    });
+});
+
+
 
 
 app.listen(PORT, () => {
